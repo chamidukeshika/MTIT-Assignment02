@@ -1,0 +1,2 @@
+-- Starter placeholder for inventory-service seed data.
+-- Add insert statements here after the CRUD implementation is finished.

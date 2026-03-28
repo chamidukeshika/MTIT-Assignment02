@@ -1,0 +1,2 @@
+-- Starter placeholder for customer-service seed data.
+-- Add insert statements here after the CRUD implementation is finished.

@@ -1,0 +1,49 @@
+server:
+  port: 8080
+
+spring:
+  application:
+    name: api-gateway
+  cloud:
+    gateway:
+      routes:
+        - id: product-service
+          uri: ${PRODUCT_SERVICE_URL:http://localhost:8081}
+          predicates:
+            - Path=/api/products/**
+          filters:
+            - RewritePath=/api/products(?<segment>/?.*), /products${segment}
+        - id: customer-service
+          uri: ${CUSTOMER_SERVICE_URL:http://localhost:8082}
+          predicates:
+            - Path=/api/customers/**
+          filters:
+            - RewritePath=/api/customers(?<segment>/?.*), /customers${segment}
+        - id: inventory-service
+          uri: ${INVENTORY_SERVICE_URL:http://localhost:8083}
+          predicates:
+            - Path=/api/inventory/**
+          filters:
+            - RewritePath=/api/inventory(?<segment>/?.*), /inventory${segment}
+        - id: order-service
+          uri: ${ORDER_SERVICE_URL:http://localhost:8084}
+          predicates:
+            - Path=/api/orders/**
+          filters:
+            - RewritePath=/api/orders(?<segment>/?.*), /orders${segment}
+        - id: payment-service
+          uri: ${PAYMENT_SERVICE_URL:http://localhost:8085}
+          predicates:
+            - Path=/api/payments/**
+          filters:
+            - RewritePath=/api/payments(?<segment>/?.*), /payments${segment}
+        - id: shipping-service
+          uri: ${SHIPPING_SERVICE_URL:http://localhost:8086}
+          predicates:
+            - Path=/api/shipping/**
+          filters:
+            - RewritePath=/api/shipping(?<segment>/?.*), /shipping${segment}
+
+springdoc:
+  swagger-ui:
+    path: /swagger-ui.html

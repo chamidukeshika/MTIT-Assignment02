@@ -1,0 +1,2 @@
+-- Starter placeholder for shipping-service seed data.
+-- Add insert statements here after the CRUD implementation is finished.

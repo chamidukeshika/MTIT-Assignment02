@@ -1,0 +1,58 @@
+version: "3.9"
+
+services:
+  api-gateway:
+    build:
+      context: ./api-gateway
+    ports:
+      - "8080:8080"
+    environment:
+      PRODUCT_SERVICE_URL: http://product-service:8081
+      CUSTOMER_SERVICE_URL: http://customer-service:8082
+      INVENTORY_SERVICE_URL: http://inventory-service:8083
+      ORDER_SERVICE_URL: http://order-service:8084
+      PAYMENT_SERVICE_URL: http://payment-service:8085
+      SHIPPING_SERVICE_URL: http://shipping-service:8086
+    depends_on:
+      - product-service
+      - customer-service
+      - inventory-service
+      - order-service
+      - payment-service
+      - shipping-service
+
+  product-service:
+    build:
+      context: ./product-service
+    ports:
+      - "8081:8081"
+
+  customer-service:
+    build:
+      context: ./customer-service
+    ports:
+      - "8082:8082"
+
+  inventory-service:
+    build:
+      context: ./inventory-service
+    ports:
+      - "8083:8083"
+
+  order-service:
+    build:
+      context: ./order-service
+    ports:
+      - "8084:8084"
+
+  payment-service:
+    build:
+      context: ./payment-service
+    ports:
+      - "8085:8085"
+
+  shipping-service:
+    build:
+      context: ./shipping-service
+    ports:
+      - "8086:8086"
