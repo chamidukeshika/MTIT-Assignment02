@@ -92,10 +92,3 @@ mvn -q test
 docker compose up --build
 ```
 
-## Notes
-
-- The database is H2 and starts with sample records for demo purposes.
-- Data resets whenever a service restarts because this setup is optimized for assignment demonstration, not production persistence.
-- The `assignment-support/` folder is where you should place your final screenshots, diagrams, slides, and Postman collection.
-- For the presentation, show direct service Swagger on ports `8081` to `8086`, then show the combined gateway Swagger page on port `8080`.
-- If a port is already in use on your machine, stop the conflicting process or change the `server.port` value in that service's `application.yml`.
