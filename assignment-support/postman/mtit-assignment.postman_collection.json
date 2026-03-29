@@ -1,8 +1,375 @@
 {
   "info": {
-    "name": "MTIT Assignment 02 Starter Collection",
-    "description": "Starter placeholder collection. Replace with working CRUD requests after implementation.",
+    "name": "MTIT Assignment 02 API Collection",
+    "description": "Working CRUD requests for the six backend microservices through the API gateway.",
     "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
   },
-  "item": []
+  "variable": [
+    {
+      "key": "gatewayUrl",
+      "value": "http://localhost:8080"
+    }
+  ],
+  "item": [
+    {
+      "name": "Product Service",
+      "item": [
+        {
+          "name": "Get All Products",
+          "request": {
+            "method": "GET",
+            "url": "{{gatewayUrl}}/api/products"
+          }
+        },
+        {
+          "name": "Get Product By Id",
+          "request": {
+            "method": "GET",
+            "url": "{{gatewayUrl}}/api/products/1"
+          }
+        },
+        {
+          "name": "Create Product",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"name\": \"Monitor\",\n  \"category\": \"Electronics\",\n  \"description\": \"27 inch IPS monitor\",\n  \"price\": 85000.0,\n  \"status\": \"AVAILABLE\"\n}"
+            },
+            "url": "{{gatewayUrl}}/api/products"
+          }
+        },
+        {
+          "name": "Update Product",
+          "request": {
+            "method": "PUT",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"name\": \"Laptop Pro\",\n  \"category\": \"Electronics\",\n  \"description\": \"Updated laptop model\",\n  \"price\": 275000.0,\n  \"status\": \"AVAILABLE\"\n}"
+            },
+            "url": "{{gatewayUrl}}/api/products/1"
+          }
+        },
+        {
+          "name": "Delete Product",
+          "request": {
+            "method": "DELETE",
+            "url": "{{gatewayUrl}}/api/products/3"
+          }
+        }
+      ]
+    },
+    {
+      "name": "Customer Service",
+      "item": [
+        {
+          "name": "Get All Customers",
+          "request": {
+            "method": "GET",
+            "url": "{{gatewayUrl}}/api/customers"
+          }
+        },
+        {
+          "name": "Get Customer By Id",
+          "request": {
+            "method": "GET",
+            "url": "{{gatewayUrl}}/api/customers/1"
+          }
+        },
+        {
+          "name": "Create Customer",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"firstName\": \"Kasun\",\n  \"lastName\": \"Silva\",\n  \"email\": \"kasun@example.com\",\n  \"phone\": \"0712345678\",\n  \"address\": \"Kandy\"\n}"
+            },
+            "url": "{{gatewayUrl}}/api/customers"
+          }
+        },
+        {
+          "name": "Update Customer",
+          "request": {
+            "method": "PUT",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"firstName\": \"Nimal\",\n  \"lastName\": \"Perera\",\n  \"email\": \"nimal.updated@example.com\",\n  \"phone\": \"0777654321\",\n  \"address\": \"Colombo 07\"\n}"
+            },
+            "url": "{{gatewayUrl}}/api/customers/1"
+          }
+        },
+        {
+          "name": "Delete Customer",
+          "request": {
+            "method": "DELETE",
+            "url": "{{gatewayUrl}}/api/customers/3"
+          }
+        }
+      ]
+    },
+    {
+      "name": "Inventory Service",
+      "item": [
+        {
+          "name": "Get All Inventory",
+          "request": {
+            "method": "GET",
+            "url": "{{gatewayUrl}}/api/inventory"
+          }
+        },
+        {
+          "name": "Get Inventory By Id",
+          "request": {
+            "method": "GET",
+            "url": "{{gatewayUrl}}/api/inventory/1"
+          }
+        },
+        {
+          "name": "Create Inventory",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"productId\": 4,\n  \"quantityAvailable\": 25,\n  \"warehouseLocation\": \"Warehouse C\",\n  \"stockStatus\": \"IN_STOCK\"\n}"
+            },
+            "url": "{{gatewayUrl}}/api/inventory"
+          }
+        },
+        {
+          "name": "Update Inventory",
+          "request": {
+            "method": "PUT",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"productId\": 1,\n  \"quantityAvailable\": 45,\n  \"warehouseLocation\": \"Warehouse A\",\n  \"stockStatus\": \"LOW_STOCK\"\n}"
+            },
+            "url": "{{gatewayUrl}}/api/inventory/1"
+          }
+        },
+        {
+          "name": "Delete Inventory",
+          "request": {
+            "method": "DELETE",
+            "url": "{{gatewayUrl}}/api/inventory/3"
+          }
+        }
+      ]
+    },
+    {
+      "name": "Order Service",
+      "item": [
+        {
+          "name": "Get All Orders",
+          "request": {
+            "method": "GET",
+            "url": "{{gatewayUrl}}/api/orders"
+          }
+        },
+        {
+          "name": "Get Order By Id",
+          "request": {
+            "method": "GET",
+            "url": "{{gatewayUrl}}/api/orders/1"
+          }
+        },
+        {
+          "name": "Create Order",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"customerId\": 1,\n  \"productId\": 2,\n  \"quantity\": 2,\n  \"totalAmount\": 7000.0,\n  \"orderStatus\": \"PENDING\"\n}"
+            },
+            "url": "{{gatewayUrl}}/api/orders"
+          }
+        },
+        {
+          "name": "Update Order",
+          "request": {
+            "method": "PUT",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"customerId\": 1,\n  \"productId\": 1,\n  \"quantity\": 1,\n  \"totalAmount\": 250000.0,\n  \"orderStatus\": \"CONFIRMED\"\n}"
+            },
+            "url": "{{gatewayUrl}}/api/orders/1"
+          }
+        },
+        {
+          "name": "Delete Order",
+          "request": {
+            "method": "DELETE",
+            "url": "{{gatewayUrl}}/api/orders/3"
+          }
+        }
+      ]
+    },
+    {
+      "name": "Payment Service",
+      "item": [
+        {
+          "name": "Get All Payments",
+          "request": {
+            "method": "GET",
+            "url": "{{gatewayUrl}}/api/payments"
+          }
+        },
+        {
+          "name": "Get Payment By Id",
+          "request": {
+            "method": "GET",
+            "url": "{{gatewayUrl}}/api/payments/1"
+          }
+        },
+        {
+          "name": "Create Payment",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"orderId\": 2,\n  \"amount\": 7000.0,\n  \"paymentMethod\": \"CARD\",\n  \"paymentStatus\": \"PAID\"\n}"
+            },
+            "url": "{{gatewayUrl}}/api/payments"
+          }
+        },
+        {
+          "name": "Update Payment",
+          "request": {
+            "method": "PUT",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"orderId\": 1,\n  \"amount\": 250000.0,\n  \"paymentMethod\": \"CARD\",\n  \"paymentStatus\": \"REFUNDED\"\n}"
+            },
+            "url": "{{gatewayUrl}}/api/payments/1"
+          }
+        },
+        {
+          "name": "Delete Payment",
+          "request": {
+            "method": "DELETE",
+            "url": "{{gatewayUrl}}/api/payments/3"
+          }
+        }
+      ]
+    },
+    {
+      "name": "Shipping Service",
+      "item": [
+        {
+          "name": "Get All Shipping",
+          "request": {
+            "method": "GET",
+            "url": "{{gatewayUrl}}/api/shipping"
+          }
+        },
+        {
+          "name": "Get Shipping By Id",
+          "request": {
+            "method": "GET",
+            "url": "{{gatewayUrl}}/api/shipping/1"
+          }
+        },
+        {
+          "name": "Create Shipping",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"orderId\": 2,\n  \"shippingAddress\": \"Matara\",\n  \"courierName\": \"Domex\",\n  \"trackingNumber\": \"TRK998877\",\n  \"shippingStatus\": \"PROCESSING\"\n}"
+            },
+            "url": "{{gatewayUrl}}/api/shipping"
+          }
+        },
+        {
+          "name": "Update Shipping",
+          "request": {
+            "method": "PUT",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"orderId\": 1,\n  \"shippingAddress\": \"Colombo 03\",\n  \"courierName\": \"Prompt Xpress\",\n  \"trackingNumber\": \"TRK123456\",\n  \"shippingStatus\": \"DELIVERED\"\n}"
+            },
+            "url": "{{gatewayUrl}}/api/shipping/1"
+          }
+        },
+        {
+          "name": "Delete Shipping",
+          "request": {
+            "method": "DELETE",
+            "url": "{{gatewayUrl}}/api/shipping/3"
+          }
+        }
+      ]
+    }
+  ]
 }

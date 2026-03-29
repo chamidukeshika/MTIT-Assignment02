@@ -10,40 +10,90 @@ spring:
         - id: product-service
           uri: ${PRODUCT_SERVICE_URL:http://localhost:8081}
           predicates:
-            - Path=/api/products/**
+            - Path=/api/products,/api/products/**
           filters:
-            - RewritePath=/api/products(?<segment>/?.*), /products${segment}
+            - RewritePath=/api/products(?<segment>/?.*), /products$\{segment}
+        - id: product-service-proxy
+          uri: ${PRODUCT_SERVICE_URL:http://localhost:8081}
+          predicates:
+            - Path=/product-service/**
+          filters:
+            - RewritePath=/product-service(?<segment>/?.*), $\{segment}
         - id: customer-service
           uri: ${CUSTOMER_SERVICE_URL:http://localhost:8082}
           predicates:
-            - Path=/api/customers/**
+            - Path=/api/customers,/api/customers/**
           filters:
-            - RewritePath=/api/customers(?<segment>/?.*), /customers${segment}
+            - RewritePath=/api/customers(?<segment>/?.*), /customers$\{segment}
+        - id: customer-service-proxy
+          uri: ${CUSTOMER_SERVICE_URL:http://localhost:8082}
+          predicates:
+            - Path=/customer-service/**
+          filters:
+            - RewritePath=/customer-service(?<segment>/?.*), $\{segment}
         - id: inventory-service
           uri: ${INVENTORY_SERVICE_URL:http://localhost:8083}
           predicates:
-            - Path=/api/inventory/**
+            - Path=/api/inventory,/api/inventory/**
           filters:
-            - RewritePath=/api/inventory(?<segment>/?.*), /inventory${segment}
+            - RewritePath=/api/inventory(?<segment>/?.*), /inventory$\{segment}
+        - id: inventory-service-proxy
+          uri: ${INVENTORY_SERVICE_URL:http://localhost:8083}
+          predicates:
+            - Path=/inventory-service/**
+          filters:
+            - RewritePath=/inventory-service(?<segment>/?.*), $\{segment}
         - id: order-service
           uri: ${ORDER_SERVICE_URL:http://localhost:8084}
           predicates:
-            - Path=/api/orders/**
+            - Path=/api/orders,/api/orders/**
           filters:
-            - RewritePath=/api/orders(?<segment>/?.*), /orders${segment}
+            - RewritePath=/api/orders(?<segment>/?.*), /orders$\{segment}
+        - id: order-service-proxy
+          uri: ${ORDER_SERVICE_URL:http://localhost:8084}
+          predicates:
+            - Path=/order-service/**
+          filters:
+            - RewritePath=/order-service(?<segment>/?.*), $\{segment}
         - id: payment-service
           uri: ${PAYMENT_SERVICE_URL:http://localhost:8085}
           predicates:
-            - Path=/api/payments/**
+            - Path=/api/payments,/api/payments/**
           filters:
-            - RewritePath=/api/payments(?<segment>/?.*), /payments${segment}
+            - RewritePath=/api/payments(?<segment>/?.*), /payments$\{segment}
+        - id: payment-service-proxy
+          uri: ${PAYMENT_SERVICE_URL:http://localhost:8085}
+          predicates:
+            - Path=/payment-service/**
+          filters:
+            - RewritePath=/payment-service(?<segment>/?.*), $\{segment}
         - id: shipping-service
           uri: ${SHIPPING_SERVICE_URL:http://localhost:8086}
           predicates:
-            - Path=/api/shipping/**
+            - Path=/api/shipping,/api/shipping/**
           filters:
-            - RewritePath=/api/shipping(?<segment>/?.*), /shipping${segment}
+            - RewritePath=/api/shipping(?<segment>/?.*), /shipping$\{segment}
+        - id: shipping-service-proxy
+          uri: ${SHIPPING_SERVICE_URL:http://localhost:8086}
+          predicates:
+            - Path=/shipping-service/**
+          filters:
+            - RewritePath=/shipping-service(?<segment>/?.*), $\{segment}
 
 springdoc:
   swagger-ui:
-    path: /swagger-ui.html
+    path: /swagger-ui/index.html
+    disable-swagger-default-url: true
+    urls:
+      - name: product-service
+        url: /product-service/v3/api-docs
+      - name: customer-service
+        url: /customer-service/v3/api-docs
+      - name: inventory-service
+        url: /inventory-service/v3/api-docs
+      - name: order-service
+        url: /order-service/v3/api-docs
+      - name: payment-service
+        url: /payment-service/v3/api-docs
+      - name: shipping-service
+        url: /shipping-service/v3/api-docs
