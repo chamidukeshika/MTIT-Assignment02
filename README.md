@@ -6,7 +6,6 @@ Backend implementation for the MTIT Assignment 02 microservices submission.
 
 - `api-gateway/` contains the single entry point for all services.
 - `product-service/`, `customer-service/`, `inventory-service/`, `order-service/`, `payment-service/`, and `shipping-service/` contain the six member-owned microservices.
-- `assignment-support/` contains the non-code submission material such as documentation notes, slide placeholders, screenshot placeholders, and Postman notes.
 
 ## Tech stack
 
