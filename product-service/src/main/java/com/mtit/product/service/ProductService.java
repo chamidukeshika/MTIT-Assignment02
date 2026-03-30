@@ -2,6 +2,7 @@ package com.mtit.product.service;
 
 import com.mtit.product.model.Product;
 import com.mtit.product.repository.ProductRepository;
+import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
 import org.springframework.stereotype.Service;
@@ -18,12 +19,12 @@ public class ProductService {
     }
 
     public Map<String, String> info() {
-        return Map.of(
-                "service", "product-service",
-                "status", "running",
-                "swagger", "/swagger-ui/index.html",
-                "gatewaySwagger", "/swagger-ui/index.html",
-                "gatewayApiDocs", "/product-service/v3/api-docs");
+        Map<String, String> details = new LinkedHashMap<>();
+        details.put("purpose", "Products");
+        details.put("directBaseUrl", "http://localhost:8081/products");
+        details.put("gatewayBaseUrl", "http://localhost:8080/api/products");
+        details.put("gatewayPath", "GET, POST, PUT, DELETE");
+        return details;
     }
 
     public List<Product> getAllProducts() {

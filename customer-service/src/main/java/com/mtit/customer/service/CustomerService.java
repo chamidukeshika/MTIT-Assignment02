@@ -2,6 +2,7 @@ package com.mtit.customer.service;
 
 import com.mtit.customer.model.Customer;
 import com.mtit.customer.repository.CustomerRepository;
+import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
 import org.springframework.stereotype.Service;
@@ -18,12 +19,12 @@ public class CustomerService {
     }
 
     public Map<String, String> info() {
-        return Map.of(
-                "service", "customer-service",
-                "status", "running",
-                "swagger", "/swagger-ui/index.html",
-                "gatewaySwagger", "/swagger-ui/index.html",
-                "gatewayApiDocs", "/customer-service/v3/api-docs");
+        Map<String, String> details = new LinkedHashMap<>();
+        details.put("purpose", "Customers");
+        details.put("directBaseUrl", "http://localhost:8082/customers");
+        details.put("gatewayBaseUrl", "http://localhost:8080/api/customers");
+        details.put("gatewayPath", "GET, POST, PUT, DELETE");
+        return details;
     }
 
     public List<Customer> getAllCustomers() {

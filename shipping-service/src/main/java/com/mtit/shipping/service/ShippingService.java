@@ -2,6 +2,7 @@ package com.mtit.shipping.service;
 
 import com.mtit.shipping.model.Shipping;
 import com.mtit.shipping.repository.ShippingRepository;
+import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
 import org.springframework.stereotype.Service;
@@ -18,12 +19,12 @@ public class ShippingService {
     }
 
     public Map<String, String> info() {
-        return Map.of(
-                "service", "shipping-service",
-                "status", "running",
-                "swagger", "/swagger-ui/index.html",
-                "gatewaySwagger", "/swagger-ui/index.html",
-                "gatewayApiDocs", "/shipping-service/v3/api-docs");
+        Map<String, String> details = new LinkedHashMap<>();
+        details.put("purpose", "Shipping");
+        details.put("directBaseUrl", "http://localhost:8086/shipping");
+        details.put("gatewayBaseUrl", "http://localhost:8080/api/shipping");
+        details.put("gatewayPath", "GET, POST, PUT, DELETE");
+        return details;
     }
 
     public List<Shipping> getAllShipments() {

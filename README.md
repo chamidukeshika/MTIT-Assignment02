@@ -37,34 +37,26 @@ Backend implementation for the MTIT Assignment 02 microservices submission.
 - Dockerfiles for every service and gateway
 - Docker Compose setup for the full backend
 
-## Direct Swagger URLs
+## API endpoint table
 
-- `http://localhost:8081/swagger-ui/index.html`
-- `http://localhost:8082/swagger-ui/index.html`
-- `http://localhost:8083/swagger-ui/index.html`
-- `http://localhost:8084/swagger-ui/index.html`
-- `http://localhost:8085/swagger-ui/index.html`
-- `http://localhost:8086/swagger-ui/index.html`
+| Purpose | Direct base URL | Gateway base URL | Gateway path |
+| --- | --- | --- | --- |
+| Products | `http://localhost:8081/products` | `http://localhost:8080/api/products` | `GET, POST, PUT, DELETE` |
+| Customers | `http://localhost:8082/customers` | `http://localhost:8080/api/customers` | `GET, POST, PUT, DELETE` |
+| Inventory | `http://localhost:8083/inventory` | `http://localhost:8080/api/inventory` | `GET, POST, PUT, DELETE` |
+| Orders | `http://localhost:8084/orders` | `http://localhost:8080/api/orders` | `GET, POST, PUT, DELETE` |
+| Payments | `http://localhost:8085/payments` | `http://localhost:8080/api/payments` | `GET, POST, PUT, DELETE` |
+| Shipping | `http://localhost:8086/shipping` | `http://localhost:8080/api/shipping` | `GET, POST, PUT, DELETE` |
 
-## Swagger through the API Gateway
+## Swagger URLs
 
-- Main gateway Swagger UI: `http://localhost:8080/swagger-ui/index.html`
-- Service docs through gateway:
-  - `http://localhost:8080/product-service/v3/api-docs`
-  - `http://localhost:8080/customer-service/v3/api-docs`
-  - `http://localhost:8080/inventory-service/v3/api-docs`
-  - `http://localhost:8080/order-service/v3/api-docs`
-  - `http://localhost:8080/payment-service/v3/api-docs`
-  - `http://localhost:8080/shipping-service/v3/api-docs`
-
-## Example gateway CRUD URLs
-
-- `GET http://localhost:8080/api/products`
-- `GET http://localhost:8080/api/customers`
-- `GET http://localhost:8080/api/inventory`
-- `GET http://localhost:8080/api/orders`
-- `GET http://localhost:8080/api/payments`
-- `GET http://localhost:8080/api/shipping`
+- Gateway Swagger UI: `http://localhost:8080/swagger-ui/index.html`
+- Product Swagger UI: `http://localhost:8081/swagger-ui/index.html`
+- Customer Swagger UI: `http://localhost:8082/swagger-ui/index.html`
+- Inventory Swagger UI: `http://localhost:8083/swagger-ui/index.html`
+- Order Swagger UI: `http://localhost:8084/swagger-ui/index.html`
+- Payment Swagger UI: `http://localhost:8085/swagger-ui/index.html`
+- Shipping Swagger UI: `http://localhost:8086/swagger-ui/index.html`
 
 ## How to run locally
 
@@ -91,4 +83,3 @@ mvn -q test
 ```bash
 docker compose up --build
 ```
-

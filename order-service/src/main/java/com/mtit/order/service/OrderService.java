@@ -2,6 +2,7 @@ package com.mtit.order.service;
 
 import com.mtit.order.model.Order;
 import com.mtit.order.repository.OrderRepository;
+import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
 import org.springframework.stereotype.Service;
@@ -18,12 +19,12 @@ public class OrderService {
     }
 
     public Map<String, String> info() {
-        return Map.of(
-                "service", "order-service",
-                "status", "running",
-                "swagger", "/swagger-ui/index.html",
-                "gatewaySwagger", "/swagger-ui/index.html",
-                "gatewayApiDocs", "/order-service/v3/api-docs");
+        Map<String, String> details = new LinkedHashMap<>();
+        details.put("purpose", "Orders");
+        details.put("directBaseUrl", "http://localhost:8084/orders");
+        details.put("gatewayBaseUrl", "http://localhost:8080/api/orders");
+        details.put("gatewayPath", "GET, POST, PUT, DELETE");
+        return details;
     }
 
     public List<Order> getAllOrders() {

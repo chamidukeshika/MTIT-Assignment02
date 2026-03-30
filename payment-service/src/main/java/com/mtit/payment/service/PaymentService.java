@@ -2,6 +2,7 @@ package com.mtit.payment.service;
 
 import com.mtit.payment.model.Payment;
 import com.mtit.payment.repository.PaymentRepository;
+import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
 import org.springframework.stereotype.Service;
@@ -18,12 +19,12 @@ public class PaymentService {
     }
 
     public Map<String, String> info() {
-        return Map.of(
-                "service", "payment-service",
-                "status", "running",
-                "swagger", "/swagger-ui/index.html",
-                "gatewaySwagger", "/swagger-ui/index.html",
-                "gatewayApiDocs", "/payment-service/v3/api-docs");
+        Map<String, String> details = new LinkedHashMap<>();
+        details.put("purpose", "Payments");
+        details.put("directBaseUrl", "http://localhost:8085/payments");
+        details.put("gatewayBaseUrl", "http://localhost:8080/api/payments");
+        details.put("gatewayPath", "GET, POST, PUT, DELETE");
+        return details;
     }
 
     public List<Payment> getAllPayments() {
